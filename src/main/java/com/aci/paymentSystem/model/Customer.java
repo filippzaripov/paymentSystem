@@ -1,4 +1,4 @@
-package model;
+package com.aci.paymentSystem.model;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package model;
+package com.aci.paymentSystem.model;
 
 public class Biller {
     private long id;
