@@ -4,37 +4,52 @@
     <meta charset="UTF-8">
     <title>Payment Tool</title>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
 <div class="container" style="margin-top: 30px">
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-8">
                 <a href="#">The Best App Ever</a>
             </div>
-            <div class="col-lg-1">
+            <div class="col-lg-1" style="margin-left: 2px">
                 <button type="button" class="btn btn-info">Payments</button>
             </div>
-            <div class="col-lg-1">
+            <div class="col-lg-1" style="margin-left: 2px">
                 <button type="button" class="btn btn-info">Customers</button>
             </div>
-            <div class="col-lg-1">
+            <div class="col-lg-1" style="margin-left: 2px">
                 <button type="button" class="btn btn-info">Billers</button>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-1">
-                <!-- Example split danger button -->
+        <div class="row" style="margin-bottom: 5px">
+            <div class="col-lg-3">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-danger">Action</button>
-                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        Some cool customer
                     </button>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="#">Action</a>
                         <a class="dropdown-item" href="#">Another action</a>
                         <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        Select biller
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Biller 1</a>
+                        <a class="dropdown-item" href="#">Biller 2</a>
+                        <a class="dropdown-item" href="#">Biller 3</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Separated link</a>
                     </div>
@@ -66,6 +81,7 @@
 </div>
 
 <script type="text/javascript" src="js/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/popper.min.js"></script>
