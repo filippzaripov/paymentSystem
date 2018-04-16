@@ -1,8 +1,9 @@
-<html>
-<head>
+<!DOCTYPE html>
 
-</head>
+<html lang="en">
+
 <body>
-<h1>Hello World</h1>
+<h1>Welcome to Spring</h1>
 </body>
+
 </html>
