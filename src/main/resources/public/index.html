@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/main.css"/>
 </head>
-<body>
-<div class="container" style="margin-top: 30px">
+<body ng-app="mainPage">
+<div class="container" style="margin-top: 30px" ng-controller="AppCtrl" >
 
-    <div class="container">
+    <div class="container" >
         <div class="row">
             <div class="col-lg-8">
                 <a href="#">The Best App Ever</a>
@@ -24,7 +24,7 @@
                 <button type="button" class="btn btn-info">Billers</button>
             </div>
         </div>
-        <div class="row" style="margin-bottom: 5px">
+        <div class="row" style="margin-bottom: 5px" >
             <div class="col-lg-3">
                 <div class="btn-group">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
@@ -56,28 +56,29 @@
                 </div>
             </div>
         </div>
+        <table class="table col-md-12" >
+            <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Biller</th>
+                <th scope="col">Account</th>
+                <th scope="col">Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in payments">
+                <td>{{ item.id }}</td>
+                <td>{{ item.customer }}</td>
+                <td>{{ item.biller }}</td>
+                <td>{{ item.account }}</td>
+                <td>{{ item.amount }}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
-    <table class="table col-md-12">
-        <thead>
-        <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Customer</th>
-            <th scope="col">Biller</th>
-            <th scope="col">Account</th>
-            <th scope="col">Amount</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>15.04.2018</td>
-            <td>Filipp</td>
-            <td>Filipp</td>
-            <td>...</td>
-            <td>$100</td>
-        </tr>
-        </tbody>
-    </table>
+
 </div>
 
 <script type="text/javascript" src="js/angular.min.js"></script>
