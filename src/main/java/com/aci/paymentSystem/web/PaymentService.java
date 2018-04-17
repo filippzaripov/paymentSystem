@@ -10,7 +10,7 @@ import java.util.List;
 public class PaymentService {
     private static List<Payment> items = new ArrayList<>();
 
-    public static void init(){
+    static{
         items.add(new Payment(1,"Filipp", "Biller", "Filipps Account", 100));
         items.add(new Payment(2,"Filipp1", "Biller", "Filipps Account", 200));
         items.add(new Payment(3,"Filipp2", "Biller", "Filipps Account", 130));
@@ -23,5 +23,9 @@ public class PaymentService {
 
     public List<Payment> findAll() {
         return items;
+    }
+
+    public Payment findOne(long id){
+        return items.get(1);
     }
 }

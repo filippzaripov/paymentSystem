@@ -3,10 +3,7 @@ package com.aci.paymentSystem.web;
 import com.aci.paymentSystem.model.Payment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +17,11 @@ public class PaymentController {
     @RequestMapping
     public List<Payment> getListOfPayments(){
         return paymentService.findAll();
+    }
+
+    @RequestMapping("/1")
+    public Payment getOne(){
+
+        return paymentService.findOne(1);
     }
 }

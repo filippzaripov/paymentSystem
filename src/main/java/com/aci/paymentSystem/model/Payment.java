@@ -15,6 +15,7 @@ public class Payment {
         this.biller = biller;
         this.account = account;
         this.amount = amount;
+        this.id = id;
     }
 
     public long getId() {
