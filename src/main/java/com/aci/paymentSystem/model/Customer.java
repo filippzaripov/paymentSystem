@@ -2,10 +2,11 @@ package com.aci.paymentSystem.model;
 
 
 import javax.persistence.*;
+import java.util.Calendar;
 import java.util.Date;
 
 @Entity
-@Table
+@Table(name="customers")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,12 +19,12 @@ public class Customer {
     private String lastName;
 
     @Column
-    private Date birthDate;
+    private String birthDate;
 
     @Column
     private String address;
 
-    public Customer(String firstName, String lastName, Date birthDate, String address) {
+    public Customer(String firstName, String lastName, String birthDate, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
@@ -50,19 +51,19 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
     public String getAddress() {
         return address;
     }
 
+    public String getBirthDate() {
+        return birthDate;
+    }
+
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 }
