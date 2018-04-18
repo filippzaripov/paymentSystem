@@ -1,19 +1,26 @@
 package com.aci.paymentSystem.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+
 @Entity
+@Table
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
+
+    @Column
     private String firstName;
+
+    @Column
     private String lastName;
+
+    @Column
     private Date birthDate;
+
+    @Column
     private String address;
 
     public Customer(String firstName, String lastName, Date birthDate, String address) {
