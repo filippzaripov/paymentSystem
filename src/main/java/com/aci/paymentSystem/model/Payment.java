@@ -14,12 +14,6 @@ public class Payment {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "customerId")
-    private String customerId;
-
-    @Column(name = "billerId")
-    private String billerId;
-
     @Column(name = "account")
     private String account;
 
@@ -29,41 +23,30 @@ public class Payment {
     public Payment() {
     }
 
-    public Payment(int id, String customerId, String billerId, String account, double amount) {
-        this.customerId = customerId;
-        this.billerId = billerId;
+    public Payment(int id, String account, double amount) {
+
         this.account = account;
         this.amount = amount;
         this.id = id;
     }
 
-    public Payment(String customerId, String billerId, String account, double amount) {
-        this.customerId = customerId;
-        this.billerId = billerId;
+    public Payment(String account, double amount) {
+
         this.account = account;
         this.amount = amount;
 
     }
 
+    public Payment(Customer customer, Biller biller, String account, double amount) {
+        this.account = account;
+        this.amount = amount;
+        this.customer = customer;
+        this.biller = biller;
+    }
+
 
     public long getId() {
         return id;
-    }
-
-    public String getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
-    }
-
-    public String getBillerId() {
-        return billerId;
-    }
-
-    public void setBillerId(String billerId) {
-        this.billerId = billerId;
     }
 
     public String getAccount() {
@@ -85,5 +68,27 @@ public class Payment {
     @Override
     public String toString() {
         return super.toString();
+    }
+
+    @ManyToOne
+    private Customer customer;
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    @ManyToOne
+    private Biller biller;
+
+    public Biller getBiller() {
+        return biller;
+    }
+
+    public void setBiller(Biller biller) {
+        this.biller = biller;
     }
 }

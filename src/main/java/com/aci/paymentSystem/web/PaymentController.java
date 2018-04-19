@@ -22,6 +22,6 @@ public class PaymentController {
     @RequestMapping("/1")
     public Payment getOne(){
 
-        return paymentService.findOne(1);
+        return paymentService.get(1);
     }
 }

@@ -1,6 +1,6 @@
 package com.aci.paymentSystem.dao.h2;
 
-import com.aci.paymentSystem.dao.CustomerDAO;
+import com.aci.paymentSystem.dao.AbstractDAO;
 import com.aci.paymentSystem.dao.HibernateUtil;
 import com.aci.paymentSystem.model.Customer;
 import org.hibernate.Session;
@@ -13,17 +13,13 @@ import java.util.List;
 /**
  * Created by Филипп on 18.04.2018.
  */
-public class H2CustomerDAO implements CustomerDAO {
+public class H2CustomerDAO extends AbstractDAO {
 
     SessionFactory sessionFactory = HibernateUtil.buildSessionFactory();
 
     public int create(Customer customer) {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        int id = (Integer) session.save(customer);
-        session.getTransaction().commit();
-        session.close();
-        return id;
+        return super.create(customer);
+
     }
 
     @Override
@@ -34,24 +30,19 @@ public class H2CustomerDAO implements CustomerDAO {
         return customer;
     }
 
-    @Override
+
     public void delete(Customer customer) {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.delete(customer);
-        session.getTransaction().commit();
-        session.close();
+        super.delete(customer);
     }
 
-    @Override
     public List<Customer> findAll() {
         Session session = sessionFactory.openSession();
         ArrayList<Customer> customersList = new ArrayList();
-        List list =  session.createNativeQuery("SELECT id,fname, lname, birthDate, address FROM customers").list();
+        List list = session.createNativeQuery("SELECT id,fname, lname, birthDate, address FROM customers").list();
         Iterator iterator = list.iterator();
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             Object[] obj = (Object[]) iterator.next();
-            customersList.add(new Customer(Integer.parseInt(obj[0].toString()),obj[1].toString(),obj[2].toString(),obj[3].toString(),obj[4].toString()));
+            customersList.add(new Customer(Integer.parseInt(obj[0].toString()), obj[1].toString(), obj[2].toString(), obj[3].toString(), obj[4].toString()));
         }
         return customersList;
     }

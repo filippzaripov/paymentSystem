@@ -1,6 +1,7 @@
 package com.aci.paymentSystem.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "billers")
@@ -58,4 +59,7 @@ public class Biller {
                 "Name: " + getName() + "\n"+
                 "Address: " + getAddress();
     }
+
+    @OneToMany(mappedBy = "biller", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Payment> paymentSet;
 }

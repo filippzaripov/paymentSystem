@@ -3,6 +3,7 @@ package com.aci.paymentSystem.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "customers")
@@ -87,4 +88,8 @@ public class Customer implements Serializable {
                 "BirthDate: " + getBirthDate() + "\n" +
                 "Address: " + getAddress();
     }
+
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Payment> paymentSet;
+
 }
