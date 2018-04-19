@@ -1,13 +1,39 @@
 package com.aci.paymentSystem.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "billers")
 public class Biller {
-    private long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "address")
     private String address;
+
+    public Biller() {
+
+    }
 
     public Biller(String name, String address) {
         this.name = name;
         this.address = address;
+    }
+
+    public Biller(int id, String name, String address) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -24,5 +50,12 @@ public class Biller {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "ID: " + getId() + "\n"+
+                "Name: " + getName() + "\n"+
+                "Address: " + getAddress();
     }
 }

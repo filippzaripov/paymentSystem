@@ -1,8 +1,8 @@
 package com.aci.paymentSystem.web;
 
 import com.aci.paymentSystem.model.Payment;
+import com.aci.paymentSystem.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

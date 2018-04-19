@@ -1,43 +1,43 @@
 package com.aci.paymentSystem.dao;
 
+import com.aci.paymentSystem.model.Biller;
 import com.aci.paymentSystem.model.Customer;
-import org.hibernate.Session;
+import com.aci.paymentSystem.service.BillerService;
+import com.aci.paymentSystem.service.CustomerService;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
+import java.util.ArrayList;
 
 public class App {
 
     public static void main(String[] args) throws SQLException {
 
-        ResultSet rs;
-        SQLiteTest test = new SQLiteTest();
-        rs = test.displayUsers();
-        /*while (rs.next()) {
-            System.out.println(rs.getString("fname") + " " + rs.getString("lname"));
-        }*/
-        Date date = new Date();
+        CustomerService customerService = new CustomerService();
+        customerService.create(new Customer("Filipp", "Zaripov", "30.04.1995", "Kosmos"));
+        customerService.create(new Customer("Max", "Talanov", "01.01.01", "Kazan"));
+        customerService.create(new Customer("Max2", "Talanov", "01.01.01", "Kazan"));
+        customerService.create(new Customer("Max3", "Talanov", "01.01.01", "Kazan"));
 
-        Customer customer = new Customer("Filipp", "Zaripov", "30.04.1995", "Kosmonavtov st.");
-        SessionFactory sessionFactory = buildSessionFactory(Customer.class);
-        Session session = sessionFactory.openSession();
-        session.save(customer);
-        Customer savedCustomer = session.get(Customer.class, 1);
-        System.out.println("____________________");
-        System.out.println("First name: " + savedCustomer.getFirstName());
-        System.out.println("Last name: " + savedCustomer.getLastName());
-        System.out.println("____________________");
-        session.close();
-        sessionFactory.close();
+        ArrayList<Customer> list = customerService.findAll();
+
+        for (Customer customer : list) {
+            System.out.println(customer.toString());
+        }
+
+        BillerService billerService = new BillerService();
+        billerService.create(new Biller("Biller 1", "Kazan, Russia"));
+        billerService.create(new Biller("Biller 2", "Kazan, Russia"));
+        billerService.create(new Biller("Biller 3", "Kazan, Russia"));
+
+        ArrayList<Biller> billers = billerService.findAll();
+        System.out.println("-------------------");
+        for (Biller localBiller : billers){
+            System.out.println(localBiller.toString());
+            System.out.println("-------------------");
+
+        }
     }
 
-    private static SessionFactory buildSessionFactory(Class clazz) {
-        return new Configuration()
-                .configure()
-                .addAnnotatedClass(clazz)
-                .buildSessionFactory();
-    }
 }

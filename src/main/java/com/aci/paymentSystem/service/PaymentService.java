@@ -1,4 +1,4 @@
-package com.aci.paymentSystem.web;
+package com.aci.paymentSystem.service;
 
 import com.aci.paymentSystem.model.Payment;
 import org.springframework.stereotype.Service;
