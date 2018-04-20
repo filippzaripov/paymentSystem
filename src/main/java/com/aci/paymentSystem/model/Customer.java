@@ -10,7 +10,7 @@ import java.util.Set;
 public class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "customer_id")
     private int id;
 
     @Column(name = "fname")
@@ -44,6 +44,7 @@ public class Customer implements Serializable {
         this.address = address;
     }
 
+    public void setId() {this.id = id;}
     public long getId() {
         return id;
     }
@@ -89,7 +90,7 @@ public class Customer implements Serializable {
                 "Address: " + getAddress();
     }
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Payment> paymentSet;
+   /* @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Payment> paymentSet;*/
 
 }

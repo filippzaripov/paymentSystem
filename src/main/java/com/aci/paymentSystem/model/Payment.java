@@ -11,7 +11,6 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private int id;
 
     @Column(name = "account")
@@ -40,7 +39,7 @@ public class Payment {
     public Payment(Customer customer, Biller biller, String account, double amount) {
         this.account = account;
         this.amount = amount;
-        this.customer = customer;
+        //this.customer = customer;
         this.biller = biller;
     }
 
@@ -71,6 +70,7 @@ public class Payment {
     }
 
     @ManyToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
     public Customer getCustomer() {

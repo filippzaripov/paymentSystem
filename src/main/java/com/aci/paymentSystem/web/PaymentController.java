@@ -14,14 +14,13 @@ public class PaymentController {
     @Autowired
     PaymentService paymentService;
 
-    @RequestMapping
-    public List<Payment> getListOfPayments(){
-        return paymentService.findAll();
-    }
 
     @RequestMapping("/1")
     public Payment getOne(){
-
         return paymentService.get(1);
+    }
+    @RequestMapping("/all")
+    public List<Payment> findAll(){
+        return paymentService.findAll();
     }
 }

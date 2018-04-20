@@ -38,7 +38,7 @@ public class H2CustomerDAO extends AbstractDAO {
     public List<Customer> findAll() {
         Session session = sessionFactory.openSession();
         ArrayList<Customer> customersList = new ArrayList();
-        List list = session.createNativeQuery("SELECT id,fname, lname, birthDate, address FROM customers").list();
+        List list = session.createNativeQuery("SELECT customer_id,fname, lname, birthDate, address FROM customers").list();
         Iterator iterator = list.iterator();
         while (iterator.hasNext()) {
             Object[] obj = (Object[]) iterator.next();

@@ -3,6 +3,7 @@ package com.aci.paymentSystem.dao;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 /**
  * Created by Филипп on 17.04.2018.
@@ -10,8 +11,17 @@ import org.hibernate.cfg.Configuration;
 public class HibernateUtil {
 
     public static SessionFactory buildSessionFactory() {
-        return new Configuration()
+
+        try{
+
+            return new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+        }catch (Throwable ex){
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw  new ExceptionInInitializerError(ex);
+        }
+
+       /* return new Configuration()
                 .configure()
-                .buildSessionFactory();
+                .buildSessionFactory();*/
     }
 }

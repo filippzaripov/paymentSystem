@@ -10,7 +10,7 @@ public abstract class AbstractDAO implements GenericDAO{
 
     SessionFactory sessionFactory = HibernateUtil.buildSessionFactory();
 
-    @Override
+   @Override
     public int create(Object o) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();

@@ -35,7 +35,7 @@ public class SQLiteTest {
                 state2.execute("CREATE TABLE user(id integer, fname varchar(60),lname varchar(60),primary key(id));");
 
                 PreparedStatement prep = con.prepareStatement("insert  into user  VALUES (?,?,?);");
-                prep.setString(2, "John");
+                prep.setString(2, "Filipp");
                 prep.setString(3, "Zaripov");
                 prep.execute();
 

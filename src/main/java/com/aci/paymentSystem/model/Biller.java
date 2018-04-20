@@ -9,7 +9,7 @@ public class Biller {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "biller_id")
     private int id;
 
     @Column(name = "name")
