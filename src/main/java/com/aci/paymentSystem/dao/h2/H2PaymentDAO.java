@@ -29,7 +29,7 @@ public class H2PaymentDAO extends AbstractDAO {
     @Override
     public Payment get(int id) {
         Session session = sessionFactory.openSession();
-        Payment payment = session.get(Payment.class, id);
+        Payment payment = (Payment) session.get(Payment.class, id);
         session.close();
         return payment;
     }
@@ -37,7 +37,7 @@ public class H2PaymentDAO extends AbstractDAO {
     public List<Payment> findAll(){
         Session session = sessionFactory.openSession();
         ArrayList<Payment> paymentsList = new ArrayList();
-        List list = session.createNativeQuery("SELECT id,account,amount FROM payments").list();
+        List list = session.createSQLQuery("SELECT id,account,amount FROM payments").list();
         Iterator iterator = list.iterator();
         while (iterator.hasNext()) {
             Object[] obj = (Object[]) iterator.next();

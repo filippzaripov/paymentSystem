@@ -1,31 +1,46 @@
 package com.aci.paymentSystem.service;
 
-import com.aci.paymentSystem.dao.h2.H2PaymentDAO;
 import com.aci.paymentSystem.model.Payment;
+import com.aci.paymentSystem.repositories.PaymentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class PaymentService extends H2PaymentDAO {
-    @Override
-    public int create(Payment o) {
-        return super.create(o);
-    }
+public class PaymentService {
 
-    @Override
-    public void delete(Payment entity) {
-        super.delete(entity);
-    }
+    @Autowired
+    private PaymentRepository paymentRepository;
 
-    @Override
-    public Payment get(int id) {
-        return super.get(id);
-    }
-
-    @Override
     public List<Payment> findAll() {
-        return super.findAll();
+
+        List<Payment> payments = new ArrayList<>();
+        paymentRepository.findAll()
+                .forEach(payments::add);
+        return payments;
+    }
+
+    public void addPayment(Payment payment){
+        paymentRepository.save(payment);
+    }
+
+    public Payment getPayment(int id){
+
+        try{
+            return paymentRepository.findById(id).get();
+        }catch(Exception e){
+            System.err.println("No such element in database. " + e );
+        }
+        return null;
+    }
+
+    public void updatePayment(Payment payment){
+        paymentRepository.save(payment);
+    }
+
+    public void deletePayment(int id){
+        paymentRepository.deleteById(id);
     }
 }

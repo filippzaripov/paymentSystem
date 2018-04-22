@@ -2,28 +2,48 @@ package com.aci.paymentSystem.service;
 
 import com.aci.paymentSystem.dao.h2.H2CustomerDAO;
 import com.aci.paymentSystem.model.Customer;
+import com.aci.paymentSystem.repositories.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
-public class CustomerService extends H2CustomerDAO {
+@Service
+public class CustomerService {
 
-    @Override
-    public int create(Customer customer) {
-        return super.create(customer);
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    public List<Customer> findAll() {
+
+        List<Customer> customers = new ArrayList<>();
+        customerRepository.findAll()
+                .forEach(customers::add);
+        return customers;
     }
 
-    @Override
-    public Customer get(int id) {
-        return super.get(id);
+    public void addCustomer(Customer customer){
+        customerRepository.save(customer);
     }
 
-    @Override
-    public void delete(Customer customer) {
-        super.delete(customer);
+    public Customer getCustomer(int id){
+
+        try{
+            return customerRepository.findById(id).get();
+        }catch(Exception e){
+            System.err.println("No such element in database. " + e );
+        }
+        return null;
     }
 
-    @Override
-    public ArrayList<Customer> findAll() {
-        return (ArrayList) super.findAll();
+    public void updateCustomer(Customer customer){
+        customerRepository.save(customer);
+    }
+
+    public void deleteCustomer(int id){
+        customerRepository.deleteById(id);
     }
 }

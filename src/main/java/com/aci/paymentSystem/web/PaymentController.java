@@ -8,19 +8,34 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/payments")
 public class PaymentController {
 
     @Autowired
-    PaymentService paymentService;
+    private PaymentService paymentService;
 
-
-    @RequestMapping("/1")
-    public Payment getOne(){
-        return paymentService.get(1);
-    }
-    @RequestMapping("/all")
+    @GetMapping("/payments")
     public List<Payment> findAll(){
         return paymentService.findAll();
+    }
+
+    @RequestMapping(value = "/payments", method = RequestMethod.POST)
+    public void addPayment(@RequestBody Payment payment){
+        paymentService.addPayment(payment);
+    }
+
+    @RequestMapping("/payments/{id}")
+    public Payment getPayment(@PathVariable int id){
+        return paymentService.getPayment(id);
+    }
+
+    @RequestMapping(value = "/payments/{id}",method = RequestMethod.PUT)
+    public void updatePayment(@RequestBody Payment payment, @PathVariable int id){
+        payment.setId(id);
+        paymentService.updatePayment(payment);
+    }
+
+    @RequestMapping(method=RequestMethod.DELETE, value = "/payments/{id}")
+    public void deletePayment(@PathVariable int id){
+        paymentService.deletePayment(id);
     }
 }

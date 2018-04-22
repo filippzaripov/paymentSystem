@@ -14,7 +14,7 @@ public abstract class AbstractDAO implements GenericDAO{
     public int create(Object o) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        int id = (Integer) session.save(o);
+        int id = (int) session.save(o);
         session.getTransaction().commit();
         session.close();
         return id;

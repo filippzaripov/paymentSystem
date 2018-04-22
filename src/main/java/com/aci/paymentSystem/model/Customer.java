@@ -9,8 +9,8 @@ import java.util.Set;
 @Table(name = "customers")
 public class Customer implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "customer_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "fname")
@@ -29,14 +29,6 @@ public class Customer implements Serializable {
 
     }
 
-    public Customer(int id, String firstName, String lastName, String birthDate, String address) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthDate = birthDate;
-        this.address = address;
-        this.id = id;
-    }
-
     public Customer(String firstName, String lastName, String birthDate, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -44,8 +36,12 @@ public class Customer implements Serializable {
         this.address = address;
     }
 
-    public void setId() {this.id = id;}
-    public long getId() {
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
         return id;
     }
 

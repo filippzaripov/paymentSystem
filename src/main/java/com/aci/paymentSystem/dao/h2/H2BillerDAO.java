@@ -33,7 +33,7 @@ public class H2BillerDAO extends AbstractDAO {
 
     public Biller get(int id) {
         Session session = sessionFactory.openSession();
-        Biller biller = session.get(Biller.class, id);
+        Biller biller = (Biller) session.get(Biller.class, id);
         session.close();
         return biller;
     }

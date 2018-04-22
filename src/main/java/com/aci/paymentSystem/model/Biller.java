@@ -8,7 +8,7 @@ import java.util.Set;
 public class Biller {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "biller_id")
     private int id;
 
@@ -31,6 +31,10 @@ public class Biller {
         this.id = id;
         this.name = name;
         this.address = address;
+    }
+
+    public void setId(int id){
+        this.id = id;
     }
 
     public int getId() {
