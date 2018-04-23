@@ -9,7 +9,7 @@ public class Biller {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "biller_id")
+    @Column(name = "id")
     private int id;
 
     @Column(name = "name")
@@ -64,6 +64,6 @@ public class Biller {
                 "Address: " + getAddress();
     }
 
-    @OneToMany(mappedBy = "biller", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Payment> paymentSet;
 }

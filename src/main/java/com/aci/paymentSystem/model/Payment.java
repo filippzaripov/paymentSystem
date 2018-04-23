@@ -39,7 +39,7 @@ public class Payment {
     public Payment(Customer customer, Biller biller, String account, double amount) {
         this.account = account;
         this.amount = amount;
-        //this.customer = customer;
+        this.customer = customer;
         this.biller = biller;
     }
 
@@ -86,6 +86,7 @@ public class Payment {
     }
 
     @ManyToOne
+    @JoinColumn(name = "biller_id")
     private Biller biller;
 
     public Biller getBiller() {

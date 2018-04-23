@@ -22,6 +22,11 @@ public class PaymentService {
         return payments;
     }
 
+    public List<Payment> findAllRelatedToCustomerId(int customerId){
+        List<Payment> payments = new ArrayList<>();
+        paymentRepository.findByCustomerId(customerId).forEach(payments::add);
+        return payments;
+    }
     public void addPayment(Payment payment){
         paymentRepository.save(payment);
     }

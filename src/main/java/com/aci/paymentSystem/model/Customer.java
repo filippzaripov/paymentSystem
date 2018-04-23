@@ -86,7 +86,7 @@ public class Customer implements Serializable {
                 "Address: " + getAddress();
     }
 
-   /* @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Payment> paymentSet;*/
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Payment> paymentSet;
 
 }

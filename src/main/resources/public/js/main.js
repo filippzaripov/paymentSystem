@@ -1,3 +1,4 @@
+/*
 var app = angular.module("mainPage", []);
 
 app.controller("AppCtrl", function($scope, $http){
@@ -12,4 +13,4 @@ app.controller("AppCtrl", function($scope, $http){
     });
 
 
-});
+});*/
