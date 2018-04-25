@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * Created by Филипп on 21.04.2018.
  */
+@CrossOrigin
 @RestController
 public class CustomerController {
 

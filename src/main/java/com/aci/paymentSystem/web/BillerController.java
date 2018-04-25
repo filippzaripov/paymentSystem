@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * Created by Филипп on 22.04.2018.
  */
+@CrossOrigin
 @RestController
 public class BillerController {
 
