@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by Филипп on 22.04.2018.
  */
-@CrossOrigin
+@CrossOrigin(origins = "http://locahost:4200", allowedHeaders = "*")
 @RestController
 public class BillerController {
 
