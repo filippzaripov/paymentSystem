@@ -26,6 +26,17 @@ import java.util.ArrayList;
 @SpringBootApplication
 public class Application {
 
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurerAdapter() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins("*")
+                        .allowedMethods("*");
+            }
+        };
+    }
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);
     }
