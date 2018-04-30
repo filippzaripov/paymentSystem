@@ -48,4 +48,14 @@ public class PaymentController {
     public void deletePayment(@PathVariable int id) {
         paymentService.deletePayment(id);
     }
+
+    @RequestMapping(method=RequestMethod.GET, value = "/payments/{filteredByCustomer}")
+    public void getPaymentsFilteredByCustomerId(@PathVariable int id){
+        paymentService.findAllRelatedToCustomerId(id);
+    }
+
+    @RequestMapping(method=RequestMethod.GET, value = "/payments/{filteredByBiller}")
+    public void getPaymentsFilteredByBillerId(@PathVariable int id){
+        paymentService.findAllRelatedToBillerId(id);
+    }
 }

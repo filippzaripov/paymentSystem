@@ -27,6 +27,13 @@ public class PaymentService {
         paymentRepository.findByCustomerId(customerId).forEach(payments::add);
         return payments;
     }
+
+    public List<Payment> findAllRelatedToBillerId(int billerId){
+        List<Payment> payments = new ArrayList<>();
+        paymentRepository.findByBillerId(billerId).forEach(payments::add);
+        return payments;
+    }
+
     public void addPayment(Payment payment){
         paymentRepository.save(payment);
     }
@@ -48,4 +55,5 @@ public class PaymentService {
     public void deletePayment(int id){
         paymentRepository.deleteById(id);
     }
+
 }

@@ -19,7 +19,7 @@ public class DataGenerator {
      * creates fake data
      */
     public void generate() {
-        Customer customer1 = new Customer("Filipp", "Zaripov", "30.04.1995", "Kazan");
+        /*Customer customer1 = new Customer("Filipp", "Zaripov", "30.04.1995", "Kazan");
         Customer customer2 = new Customer("Bill", "Gates", "28.10.1955", "USA");
         Customer customer3 = new Customer("Steve", "Jobs", "24.02.1955", "USA");
         Customer customer4 = new Customer("Elon", "Musk", "28.06.1971", "Canada");
@@ -41,7 +41,7 @@ public class DataGenerator {
         paymentService.addPayment(new Payment(customer2, biller2,"00000", 2178));
         paymentService.addPayment(new Payment(customer3, biller3,"02897123", 153241));
         paymentService.addPayment(new Payment(customer4, biller1,"350901234", 1352.50));
-        paymentService.addPayment(new Payment(customer1, biller2,"00982712", 8742.46));
+        paymentService.addPayment(new Payment(customer1, biller2,"00982712", 8742.46));*/
 
     }
 }

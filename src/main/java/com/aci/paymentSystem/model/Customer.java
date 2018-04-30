@@ -3,6 +3,7 @@ package com.aci.paymentSystem.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -20,7 +21,7 @@ public class Customer implements Serializable {
     private String lastName;
 
     @Column(name = "birthDate")
-    private String birthDate;
+    private Date birthDate;
 
     @Column(name = "address")
     private String address;
@@ -29,7 +30,7 @@ public class Customer implements Serializable {
 
     }
 
-    public Customer(String firstName, String lastName, String birthDate, String address) {
+    public Customer(String firstName, String lastName, Date birthDate, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
@@ -65,7 +66,7 @@ public class Customer implements Serializable {
         return address;
     }
 
-    public String getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
@@ -73,7 +74,7 @@ public class Customer implements Serializable {
         this.address = address;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 

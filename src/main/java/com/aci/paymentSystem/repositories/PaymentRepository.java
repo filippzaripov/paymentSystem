@@ -15,8 +15,8 @@ import java.util.List;
 @Repository
 public interface PaymentRepository extends CrudRepository<Payment, Integer> {
 
-    public List<Payment> findByCustomerId(int topicId);
+    public List<Payment> findByCustomerId(int id);
 
-    public List<Payment> findByBiller(Biller biller);
+    public List<Payment> findByBillerId(int id);
 
 }
