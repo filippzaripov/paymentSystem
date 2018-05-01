@@ -1,6 +1,7 @@
 package com.aci.paymentSystem.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by Филипп on 14.04.2018.
@@ -18,6 +19,9 @@ public class Payment {
 
     @Column(name = "amount")
     private double amount;
+
+    @Column(name = "date")
+    private Date date;
 
     public Payment() {
     }
@@ -68,13 +72,21 @@ public class Payment {
         this.amount = amount;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return super.toString();
     }
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customerId")
     private Customer customer;
 
     public Customer getCustomer() {
@@ -86,7 +98,7 @@ public class Payment {
     }
 
     @ManyToOne
-    @JoinColumn(name = "biller_id")
+    @JoinColumn(name = "billerId")
     private Biller biller;
 
     public Biller getBiller() {

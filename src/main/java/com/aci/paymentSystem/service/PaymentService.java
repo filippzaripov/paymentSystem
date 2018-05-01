@@ -1,11 +1,16 @@
 package com.aci.paymentSystem.service;
 
+import com.aci.paymentSystem.model.Biller;
+import com.aci.paymentSystem.model.Customer;
 import com.aci.paymentSystem.model.Payment;
+import com.aci.paymentSystem.repositories.BillerRepository;
+import com.aci.paymentSystem.repositories.CustomerRepository;
 import com.aci.paymentSystem.repositories.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -13,6 +18,12 @@ public class PaymentService {
 
     @Autowired
     private PaymentRepository paymentRepository;
+
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    @Autowired
+    private BillerRepository billerRepository;
 
     public List<Payment> findAll() {
 
@@ -24,13 +35,15 @@ public class PaymentService {
 
     public List<Payment> findAllRelatedToCustomerId(int customerId){
         List<Payment> payments = new ArrayList<>();
-        paymentRepository.findByCustomerId(customerId).forEach(payments::add);
+        Customer customer = customerRepository.findById(customerId).get();
+        paymentRepository.findAllByCustomer(customer).forEach(payments::add);
         return payments;
     }
 
     public List<Payment> findAllRelatedToBillerId(int billerId){
         List<Payment> payments = new ArrayList<>();
-        paymentRepository.findByBillerId(billerId).forEach(payments::add);
+        Biller biller = billerRepository.findById(billerId).get();
+        paymentRepository.findAllByBiller(biller).forEach(payments::add);
         return payments;
     }
 

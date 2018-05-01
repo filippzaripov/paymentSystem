@@ -1,1 +1,0 @@
-Hello I'm static context and now

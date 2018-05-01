@@ -7,6 +7,7 @@ import com.aci.paymentSystem.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 @CrossOrigin
 @RestController
@@ -23,6 +24,7 @@ public class PaymentController {
 
     @GetMapping("/payments")
     public List<Payment> findAll() {
+        System.out.println("I'm in findAll() method");
         return paymentService.findAll();
     }
 
@@ -30,10 +32,11 @@ public class PaymentController {
     public void addPayment(@RequestBody Payment payment, @RequestParam("customer_id") int customerId, @RequestParam("biller_id") int billerId) {
         payment.setCustomer(customerService.getCustomer(customerId));
         payment.setBiller(billerService.getBiller(billerId));
+        payment.setDate(new Date());
         paymentService.addPayment(payment);
     }
 
-    @RequestMapping("/payments/{id}")
+    @RequestMapping(method = RequestMethod.GET, value="/payments/{id}")
     public Payment getPayment(@PathVariable int id) {
         return paymentService.getPayment(id);
     }
@@ -49,13 +52,13 @@ public class PaymentController {
         paymentService.deletePayment(id);
     }
 
-    @RequestMapping(method=RequestMethod.GET, value = "/payments/{filteredByCustomer}")
-    public void getPaymentsFilteredByCustomerId(@PathVariable int id){
-        paymentService.findAllRelatedToCustomerId(id);
+    @RequestMapping(method=RequestMethod.GET, value = "/payments/filteredByCustomer/{id}")
+    public List<Payment> getPaymentsFilteredByCustomerId(@PathVariable int id){
+       return paymentService.findAllRelatedToCustomerId(id);
     }
 
-    @RequestMapping(method=RequestMethod.GET, value = "/payments/{filteredByBiller}")
-    public void getPaymentsFilteredByBillerId(@PathVariable int id){
-        paymentService.findAllRelatedToBillerId(id);
+    @RequestMapping(method=RequestMethod.GET, value = "/payments/filteredByBiller/{id}")
+    public List<Payment> getPaymentsFilteredByBillerId(@PathVariable int id){
+        return paymentService.findAllRelatedToBillerId(id);
     }
 }

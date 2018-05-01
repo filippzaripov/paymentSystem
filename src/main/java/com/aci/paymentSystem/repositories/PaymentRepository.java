@@ -19,4 +19,11 @@ public interface PaymentRepository extends CrudRepository<Payment, Integer> {
 
     public List<Payment> findByBillerId(int id);
 
+    public List<Payment> findAllByCustomer(Customer customer);
+
+    public List<Payment> findAllByBiller(Biller biller);
+
+
+
+
 }
