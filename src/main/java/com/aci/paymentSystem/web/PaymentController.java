@@ -24,7 +24,6 @@ public class PaymentController {
 
     @GetMapping("/payments")
     public List<Payment> findAll() {
-        System.out.println("I'm in findAll() method");
         return paymentService.findAll();
     }
 
